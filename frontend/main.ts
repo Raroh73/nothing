@@ -81,6 +81,7 @@ async function saveEvent() {
 
 async function saveAsEvent() {
   file.path = (await save({
+    defaultPath: file.path,
     filters: [
       {
         name: "Markdown",
