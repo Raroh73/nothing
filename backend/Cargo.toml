@@ -1,0 +1,17 @@
+[package]
+name = "nothing"
+version = "0.0.0"
+description = "Simple Markdown editor."
+authors = ["Raroh73"]
+license = "MIT"
+repository = "https://github.com/Raroh73/nothing"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "1.4.0", features = [] }
+
+[dependencies]
+tauri = { version = "1.4.1", features = ["dialog-open", "dialog-save", "fs-read-file", "fs-write-file"] }
+
+[features]
+custom-protocol = ["tauri/custom-protocol"]
