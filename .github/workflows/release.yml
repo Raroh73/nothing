@@ -1,8 +1,8 @@
-name: Build dev version
+name: Release
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "v*"
 jobs:
   release:
     permissions:
@@ -34,3 +34,9 @@ jobs:
         run: npm install
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: "App Name v__VERSION__"
+          releaseBody: "See the assets to download and install this version."
+          releaseDraft: true
+          prerelease: false
