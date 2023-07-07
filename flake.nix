@@ -24,6 +24,7 @@
                   gtk3
                   libsoup
                   nodejs
+                  openssl
                   pkg-config
                   rustc
                   rustfmt
