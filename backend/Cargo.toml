@@ -1,6 +1,6 @@
 [package]
 name = "nothing"
-version = "0.0.0"
+version = "0.1.0"
 description = "Simple Markdown editor."
 authors = ["Raroh73"]
 license = "MIT"
