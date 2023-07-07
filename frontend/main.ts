@@ -80,7 +80,7 @@ async function saveEvent() {
 }
 
 async function saveAsEvent() {
-  const path = (await save({
+  file.path = (await save({
     filters: [
       {
         name: "Markdown",
@@ -88,7 +88,7 @@ async function saveAsEvent() {
       },
     ],
   })) as string;
-  await writeTextFile(path, file.text);
+  await writeTextFile(file.path, file.text);
 }
 
 function closeEvent() {
