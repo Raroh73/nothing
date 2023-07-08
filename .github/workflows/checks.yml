@@ -68,4 +68,4 @@ jobs:
       - name: Install frontend dependencies
         run: npm install
       - name: Build the app
-        run: npm run eslint
+        run: npm run lint
