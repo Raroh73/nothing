@@ -21,6 +21,7 @@ jobs:
         with:
           workspaces: "backend"
       - name: Run rustfmt
+        working-directory: backend
         run: cargo fmt --all -- --check
   clippy:
     permissions:
@@ -36,6 +37,7 @@ jobs:
         with:
           workspaces: "backend"
       - name: Run rustfmt
+        working-directory: backend
         run: cargo clippy -- -D warnings
   prettier:
     permissions:
