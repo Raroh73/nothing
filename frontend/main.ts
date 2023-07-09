@@ -32,12 +32,20 @@ const menuListener = listen("menu-event", async (event) => {
 });
 
 function newEvent() {
+  file.path = "";
+  file.text = "";
+  const filename = document.getElementById("filename");
+  if (filename) {
+    filename.innerText = file.path;
+  }
   const editor = document.getElementById("editor");
   if (editor) {
     editor.contentEditable = "true";
+    editor.innerText = file.text;
     editor.addEventListener("input", updateText);
     editor.addEventListener("input", renderHtml);
   }
+  renderHtml();
 }
 
 async function openEvent() {
