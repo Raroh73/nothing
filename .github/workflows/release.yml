@@ -24,7 +24,7 @@ jobs:
       - name: Rust cache
         uses: swatinem/rust-cache@v2
         with:
-          workspaces: "backend -> target"
+          workspaces: "backend"
       - name: Sync node version and setup cache
         uses: actions/setup-node@v3
         with:
