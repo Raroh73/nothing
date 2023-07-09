@@ -41,7 +41,7 @@ function newEvent() {
 }
 
 async function openEvent() {
-  const path = (await open({
+  file.path = (await open({
     filters: [
       {
         name: "Markdown",
@@ -49,11 +49,10 @@ async function openEvent() {
       },
     ],
   })) as string;
-  file.path = path;
-  file.text = await readTextFile(path);
+  file.text = await readTextFile(file.path);
   const filename = document.getElementById("filename");
   if (filename) {
-    filename.innerText = path;
+    filename.innerText = file.path;
   }
   const editor = document.getElementById("editor");
   if (editor) {
