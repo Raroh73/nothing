@@ -28,7 +28,7 @@ jobs:
       - name: Sync node version and setup cache
         uses: actions/setup-node@v3
         with:
-          node-version: "lts/*"
+          node-version: "*"
           cache: "npm"
       - name: Install frontend dependencies
         run: npm ci
