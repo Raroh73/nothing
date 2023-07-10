@@ -56,7 +56,7 @@ jobs:
           node-version: "lts/*"
           cache: "npm"
       - name: Install frontend dependencies
-        run: npm install
+        run: npm ci
       - name: Run prettier
         run: npm run prettier
   eslint:
@@ -72,6 +72,6 @@ jobs:
           node-version: "lts/*"
           cache: "npm"
       - name: Install frontend dependencies
-        run: npm install
+        run: npm ci
       - name: Run eslint
         run: npm run lint

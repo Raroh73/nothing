@@ -31,7 +31,7 @@ jobs:
           node-version: "lts/*"
           cache: "npm"
       - name: Install frontend dependencies
-        run: npm install
+        run: npm ci
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
         env:
