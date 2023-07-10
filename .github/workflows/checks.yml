@@ -54,6 +54,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "*"
+          check-latest: true
           cache: "npm"
       - name: Install frontend dependencies
         run: npm ci
@@ -70,6 +71,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "*"
+          check-latest: true
           cache: "npm"
       - name: Install frontend dependencies
         run: npm ci
