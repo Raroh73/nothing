@@ -22,7 +22,7 @@
     "@tauri-apps/api": "1.4.0",
     "@types/dompurify": "3.0.2",
     "@types/marked": "5.0.0",
-    "dompurify": "3.0.4",
+    "dompurify": "3.0.5",
     "highlight.js": "^11.8.0",
     "marked": "5.1.1"
   },
