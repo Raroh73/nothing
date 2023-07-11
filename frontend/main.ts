@@ -46,6 +46,7 @@ function newEvent() {
     editor.addEventListener("input", renderHtml);
   }
   renderHtml();
+  showElements();
 }
 
 async function openEvent() {
@@ -70,6 +71,7 @@ async function openEvent() {
     editor.addEventListener("input", renderHtml);
   }
   renderHtml();
+  showElements;
 }
 
 async function saveEvent() {
@@ -115,6 +117,7 @@ function closeEvent() {
   if (preview) {
     preview.innerText = "";
   }
+  hideElements();
 }
 
 function updateText() {
@@ -128,6 +131,36 @@ function renderHtml() {
   const preview = document.getElementById("preview");
   if (preview) {
     preview.innerHTML = DOMPurify.sanitize(marked(file.text));
+  }
+}
+
+function showElements() {
+  const filename = document.getElementById("filename");
+  if (filename) {
+    filename.hidden = false;
+  }
+  const editor = document.getElementById("editor");
+  if (editor) {
+    editor.hidden = false;
+  }
+  const preview = document.getElementById("preview");
+  if (preview) {
+    preview.hidden = false;
+  }
+}
+
+function hideElements() {
+  const filename = document.getElementById("filename");
+  if (filename) {
+    filename.hidden = true;
+  }
+  const editor = document.getElementById("editor");
+  if (editor) {
+    editor.hidden = true;
+  }
+  const preview = document.getElementById("preview");
+  if (preview) {
+    preview.hidden = true;
   }
 }
 
