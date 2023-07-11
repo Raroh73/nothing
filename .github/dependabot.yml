@@ -3,9 +3,7 @@ updates:
   - package-ecosystem: "cargo"
     directory: "/backend"
     schedule:
-      interval: "weekly"
-      day: "sunday"
-      time: "00:00"
+      interval: "daily"
     commit-message:
       prefix: "chore"
     labels:
@@ -16,9 +14,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "sunday"
-      time: "00:00"
+      interval: "daily"
     commit-message:
       prefix: "chore"
     labels:
@@ -29,9 +25,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "sunday"
-      time: "00:00"
+      interval: "daily"
     commit-message:
       prefix: "chore"
     labels:
