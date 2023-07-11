@@ -23,7 +23,7 @@
                   glib
                   gtk3
                   libsoup
-                  nodejs
+                  nodejs_latest
                   openssl
                   pkg-config
                   rustc
