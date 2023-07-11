@@ -1,3 +1,19 @@
+.container {
+  display: flex;
+}
+
+.filename {
+  text-align: center;
+}
+
+.editor {
+  width: 50%;
+}
+
+.preview {
+  width: 50%;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     color: #f6f6f6;
