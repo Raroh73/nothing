@@ -71,7 +71,7 @@ async function openEvent() {
     editor.addEventListener("input", renderHtml);
   }
   renderHtml();
-  showElements;
+  showElements();
 }
 
 async function saveEvent() {
