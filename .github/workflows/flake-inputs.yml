@@ -5,10 +5,10 @@ on:
   workflow_dispatch:
 jobs:
   update-lockfile:
-    runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
