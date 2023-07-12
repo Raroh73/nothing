@@ -33,6 +33,9 @@ jobs:
           cache: "npm"
       - name: Install frontend dependencies
         run: npm ci
+      - name: Get changelog entry
+        id: changelog_reader
+        uses: mindsers/changelog-reader-action@v2
       - name: Build and release
         uses: tauri-apps/tauri-action@v0
         env:
@@ -41,5 +44,6 @@ jobs:
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
           tagName: ${{ github.ref_name }}
-          releaseName: "Nothing v__VERSION__"
+          releaseName: Nothing ${{ steps.changelog_reader.outputs.version }}
+          releaseBody: ${{ steps.changelog_reader.outputs.changes }}
           releaseDraft: true
