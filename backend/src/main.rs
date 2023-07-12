@@ -1,7 +1,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use std::error::Error;
-use tauri::{CustomMenuItem, Menu, MenuItem, Submenu, WindowMenuEvent};
+use tauri::{CustomMenuItem, Manager, Menu, MenuItem, Submenu, Window, WindowMenuEvent};
 
 fn event_handler(event: WindowMenuEvent) {
     match event.menu_item_id() {
@@ -22,6 +22,11 @@ fn event_handler(event: WindowMenuEvent) {
         }
         _ => {}
     }
+}
+
+#[tauri::command]
+async fn show_main_window(window: Window) {
+    window.get_window("main").unwrap().show().unwrap();
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -46,6 +51,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     tauri::Builder::default()
         .menu(menu)
         .on_menu_event(event_handler)
+        .invoke_handler(tauri::generate_handler![show_main_window])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 

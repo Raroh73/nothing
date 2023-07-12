@@ -1,3 +1,4 @@
+import { invoke } from "@tauri-apps/api";
 import { open, save } from "@tauri-apps/api/dialog";
 import { listen } from "@tauri-apps/api/event";
 import { readTextFile, writeTextFile } from "@tauri-apps/api/fs";
@@ -165,5 +166,6 @@ function hideElements() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+  invoke("show_main_window");
   menuListener;
 });
