@@ -1,32 +1,47 @@
 #container {
-  display: flex;
+  display: grid;
+  grid-template-areas:
+    "filename filename"
+    "editor preview";
+  grid-template-columns: 50% 50%;
 }
 
-#filename {
+#container > #filename {
+  grid-area: filename;
   text-align: center;
 }
 
-#editor {
+#container > #editor {
   border-radius: 5px;
   border-style: solid;
   border-width: 2px;
+  grid-area: editor;
   margin: 4px;
   padding: 4px;
-  width: 50%;
 }
 
-#preview {
+#container > #preview {
   border-radius: 5px;
   border-style: solid;
   border-width: 2px;
+  grid-area: preview;
   margin: 4px;
   padding: 4px;
-  width: 50%;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     color: #f6f6f6;
     background-color: #2f2f2f;
+  }
+}
+
+@media (max-width: 640px) {
+  #container {
+    grid-template-areas:
+      "filename"
+      "editor"
+      "preview";
+    grid-template-columns: 100%;
   }
 }
