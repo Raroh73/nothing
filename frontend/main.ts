@@ -47,7 +47,7 @@ function newEvent() {
     editor.addEventListener("input", renderHtml);
   }
   renderHtml();
-  showElements();
+  showApp();
 }
 
 async function openEvent() {
@@ -72,7 +72,7 @@ async function openEvent() {
     editor.addEventListener("input", renderHtml);
   }
   renderHtml();
-  showElements();
+  showApp();
 }
 
 async function saveEvent() {
@@ -118,7 +118,7 @@ function closeEvent() {
   if (preview) {
     preview.innerText = "";
   }
-  hideElements();
+  hideApp();
 }
 
 function updateText() {
@@ -135,33 +135,17 @@ function renderHtml() {
   }
 }
 
-function showElements() {
-  const filename = document.getElementById("filename");
-  if (filename) {
-    filename.hidden = false;
-  }
-  const editor = document.getElementById("editor");
-  if (editor) {
-    editor.hidden = false;
-  }
-  const preview = document.getElementById("preview");
-  if (preview) {
-    preview.hidden = false;
+function showApp() {
+  const app = document.getElementById("app");
+  if (app) {
+    app.hidden = false;
   }
 }
 
-function hideElements() {
-  const filename = document.getElementById("filename");
-  if (filename) {
-    filename.hidden = true;
-  }
-  const editor = document.getElementById("editor");
-  if (editor) {
-    editor.hidden = true;
-  }
-  const preview = document.getElementById("preview");
-  if (preview) {
-    preview.hidden = true;
+function hideApp() {
+  const app = document.getElementById("app");
+  if (app) {
+    app.hidden = true;
   }
 }
 
