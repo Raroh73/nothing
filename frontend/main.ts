@@ -32,7 +32,7 @@ const menuListener = listen("menu-event", async (event) => {
   }
 });
 
-function newEvent() {
+async function newEvent() {
   file.path = "";
   file.text = "";
   const filename = document.getElementById("filename");
@@ -102,7 +102,7 @@ async function saveAsEvent() {
   await writeTextFile(file.path, file.text);
 }
 
-function closeEvent() {
+async function closeEvent() {
   const filename = document.getElementById("filename");
   if (filename) {
     filename.innerText = "";
@@ -121,35 +121,35 @@ function closeEvent() {
   hideApp();
 }
 
-function updateText() {
+async function updateText() {
   const editor = document.getElementById("editor");
   if (editor) {
     file.text = editor.innerText;
   }
 }
 
-function renderHtml() {
+async function renderHtml() {
   const preview = document.getElementById("preview");
   if (preview) {
     preview.innerHTML = DOMPurify.sanitize(marked(file.text));
   }
 }
 
-function showApp() {
+async function showApp() {
   const app = document.getElementById("app");
   if (app) {
     app.hidden = false;
   }
 }
 
-function hideApp() {
+async function hideApp() {
   const app = document.getElementById("app");
   if (app) {
     app.hidden = true;
   }
 }
 
-function showMainWindow() {
+async function showMainWindow() {
   invoke("show_main_window");
 }
 
