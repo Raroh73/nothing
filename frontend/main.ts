@@ -149,7 +149,11 @@ function hideApp() {
   }
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+function showMainWindow() {
   invoke("show_main_window");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
   menuListener;
+  showMainWindow();
 });
