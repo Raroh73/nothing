@@ -35,19 +35,18 @@ const menuListener = listen("menu-event", async (event) => {
 async function newEvent() {
   file.path = "";
   file.text = "";
+  createApp();
   const filename = document.getElementById("filename");
   if (filename) {
     filename.innerText = file.path;
   }
   const editor = document.getElementById("editor");
   if (editor) {
-    editor.contentEditable = "true";
     editor.innerText = file.text;
     editor.addEventListener("input", updateText);
     editor.addEventListener("input", renderHtml);
   }
   renderHtml();
-  showApp();
 }
 
 async function openEvent() {
@@ -60,19 +59,18 @@ async function openEvent() {
     ],
   })) as string;
   file.text = await readTextFile(file.path);
+  createApp();
   const filename = document.getElementById("filename");
   if (filename) {
     filename.innerText = file.path;
   }
   const editor = document.getElementById("editor");
   if (editor) {
-    editor.contentEditable = "true";
     editor.innerText = file.text;
     editor.addEventListener("input", updateText);
     editor.addEventListener("input", renderHtml);
   }
   renderHtml();
-  showApp();
 }
 
 async function saveEvent() {
@@ -103,22 +101,9 @@ async function saveAsEvent() {
 }
 
 async function closeEvent() {
-  const filename = document.getElementById("filename");
-  if (filename) {
-    filename.innerText = "";
-  }
-  const editor = document.getElementById("editor");
-  if (editor) {
-    editor.innerText = "";
-    editor.contentEditable = "false";
-    editor.removeEventListener("input", updateText);
-    editor.removeEventListener("input", renderHtml);
-  }
-  const preview = document.getElementById("preview");
-  if (preview) {
-    preview.innerText = "";
-  }
-  hideApp();
+  file.path = "";
+  file.text = "";
+  removeApp();
 }
 
 async function updateText() {
@@ -135,17 +120,51 @@ async function renderHtml() {
   }
 }
 
-async function showApp() {
-  const app = document.getElementById("app");
+async function createApp() {
+  let app = document.getElementById("app");
   if (app) {
-    app.hidden = false;
+    return;
   }
+
+  app = document.createElement("div");
+  app.setAttribute("id", "app");
+
+  const filename =
+    document.getElementById("filename") || createFilenameElement();
+  app.appendChild(filename);
+
+  const editor = document.getElementById("editor") || createEditorElement();
+  app.appendChild(editor);
+
+  const preview = document.getElementById("preview") || createPreviewElement();
+  app.appendChild(preview);
+
+  document.body.appendChild(app);
 }
 
-async function hideApp() {
+function createFilenameElement() {
+  const filename = document.createElement("h1");
+  filename.setAttribute("id", "filename");
+  return filename;
+}
+
+function createEditorElement() {
+  const editor = document.createElement("div");
+  editor.setAttribute("id", "editor");
+  editor.contentEditable = "true";
+  return editor;
+}
+
+function createPreviewElement() {
+  const preview = document.createElement("div");
+  preview.setAttribute("id", "preview");
+  return preview;
+}
+
+async function removeApp() {
   const app = document.getElementById("app");
   if (app) {
-    app.hidden = true;
+    app.remove();
   }
 }
 

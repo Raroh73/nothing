@@ -3,7 +3,7 @@
   color: #2f2f2f;
 }
 
-#container {
+#app {
   display: grid;
   grid-template-areas:
     "filename filename"
@@ -11,12 +11,12 @@
   grid-template-columns: 50% 50%;
 }
 
-#container > #filename {
+#app > #filename {
   grid-area: filename;
   text-align: center;
 }
 
-#container > #editor {
+#app > #editor {
   border-radius: 5px;
   border-style: solid;
   border-width: 2px;
@@ -25,7 +25,7 @@
   padding: 4px;
 }
 
-#container > #preview {
+#app > #preview {
   border-radius: 5px;
   border-style: solid;
   border-width: 2px;
@@ -42,7 +42,7 @@
 }
 
 @media (max-width: 640px) {
-  #container {
+  #app {
     grid-template-areas:
       "filename"
       "editor"
