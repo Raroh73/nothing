@@ -14,5 +14,8 @@ export default defineConfig(async () => ({
   },
   test: {
     environment: "jsdom",
+    coverage: {
+      reporter: ["lcov"],
+    },
   },
 }));
