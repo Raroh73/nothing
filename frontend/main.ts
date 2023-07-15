@@ -100,7 +100,7 @@ async function renderHtml() {
   }
 }
 
-async function createApp() {
+export async function createApp() {
   let app = document.getElementById("app");
   if (app) {
     return;
@@ -141,7 +141,7 @@ function createPreviewElement() {
   return preview;
 }
 
-async function removeApp() {
+export async function removeApp() {
   const app = document.getElementById("app");
   if (app) {
     app.remove();
