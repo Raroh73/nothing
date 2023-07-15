@@ -77,3 +77,20 @@ jobs:
         run: npm ci
       - name: Run eslint
         run: npm run lint
+  vitest:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "*"
+          check-latest: true
+          cache: "npm"
+      - name: Install frontend dependencies
+        run: npm ci
+      - name: Run vitest
+        run: npm run test
