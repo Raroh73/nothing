@@ -12,26 +12,6 @@ interface File {
 
 const file: File = { path: "", text: "" };
 
-const menuListener = listen("menu-event", async (event) => {
-  switch (event.payload) {
-    case "new-event":
-      newEvent();
-      break;
-    case "open-event":
-      openEvent();
-      break;
-    case "save-event":
-      saveEvent();
-      break;
-    case "save-as-event":
-      saveAsEvent();
-      break;
-    case "close-event":
-      closeEvent();
-      break;
-  }
-});
-
 async function newEvent() {
   file.path = "";
   file.text = "";
@@ -173,6 +153,24 @@ async function showMainWindow() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  menuListener;
+  listen("menu-event", async (event) => {
+    switch (event.payload) {
+      case "new-event":
+        newEvent();
+        break;
+      case "open-event":
+        openEvent();
+        break;
+      case "save-event":
+        saveEvent();
+        break;
+      case "save-as-event":
+        saveAsEvent();
+        break;
+      case "close-event":
+        closeEvent();
+        break;
+    }
+  });
   showMainWindow();
 });
