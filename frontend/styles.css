@@ -9,6 +9,8 @@
     "filename filename"
     "editor preview";
   grid-template-columns: 50% 50%;
+  white-space: break-spaces;
+  word-break: break-all;
 }
 
 #app > #filename {
