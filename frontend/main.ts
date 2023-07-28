@@ -13,8 +13,7 @@ interface File {
 const file: File = { path: "", text: "" };
 
 async function newEvent() {
-  file.path = "";
-  file.text = "";
+  resetFile();
   createApp();
   const filename = document.getElementById("filename");
   if (filename) {
@@ -81,8 +80,7 @@ async function saveAsEvent() {
 }
 
 async function closeEvent() {
-  file.path = "";
-  file.text = "";
+  resetFile();
   removeApp();
 }
 
@@ -146,6 +144,11 @@ export async function removeApp() {
   if (app) {
     app.remove();
   }
+}
+
+function resetFile() {
+  file.path = "";
+  file.text = "";
 }
 
 async function showMainWindow() {
