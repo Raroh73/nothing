@@ -100,24 +100,21 @@ async function renderHtml() {
 
 export async function createApp() {
   let app = document.getElementById("app");
-  if (app) {
-    return;
+  if (!app) {
+    app = document.createElement("div");
+    app.setAttribute("id", "app");
+
+    const filename = createFilenameElement();
+    app.appendChild(filename);
+
+    const editor = createEditorElement();
+    app.appendChild(editor);
+
+    const preview = createPreviewElement();
+    app.appendChild(preview);
+
+    document.body.appendChild(app);
   }
-
-  app = document.createElement("div");
-  app.setAttribute("id", "app");
-
-  const filename =
-    document.getElementById("filename") || createFilenameElement();
-  app.appendChild(filename);
-
-  const editor = document.getElementById("editor") || createEditorElement();
-  app.appendChild(editor);
-
-  const preview = document.getElementById("preview") || createPreviewElement();
-  app.appendChild(preview);
-
-  document.body.appendChild(app);
 }
 
 function createFilenameElement() {
