@@ -3,6 +3,20 @@
 use std::error::Error;
 use tauri::{CustomMenuItem, Manager, Menu, MenuItem, Submenu, Window, WindowMenuEvent};
 
+fn create_menu() -> Menu {
+    Menu::new().add_submenu(Submenu::new(
+        "File",
+        Menu::new()
+            .add_item(CustomMenuItem::new("new", "New").accelerator("CmdOrControl+N"))
+            .add_item(CustomMenuItem::new("open", "Open").accelerator("CmdOrControl+O"))
+            .add_item(CustomMenuItem::new("save", "Save").accelerator("CmdOrControl+S"))
+            .add_item(CustomMenuItem::new("save_as", "Save As").accelerator("CmdOrControl+Shift+S"))
+            .add_item(CustomMenuItem::new("close", "Close").accelerator("CmdOrControl+W"))
+            .add_native_item(MenuItem::Separator)
+            .add_native_item(MenuItem::Quit),
+    ))
+}
+
 fn event_handler(event: WindowMenuEvent) {
     match event.menu_item_id() {
         "new" => {
@@ -30,26 +44,8 @@ async fn show_main_window(window: Window) {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let new = CustomMenuItem::new("new", "New").accelerator("CmdOrControl+N");
-    let open = CustomMenuItem::new("open", "Open").accelerator("CmdOrControl+O");
-    let save = CustomMenuItem::new("save", "Save").accelerator("CmdOrControl+S");
-    let save_as = CustomMenuItem::new("save_as", "Save As").accelerator("CmdOrControl+Shift+S");
-    let close = CustomMenuItem::new("close", "Close").accelerator("CmdOrControl+W");
-    let submenu = Submenu::new(
-        "File",
-        Menu::new()
-            .add_item(new)
-            .add_item(open)
-            .add_item(save)
-            .add_item(save_as)
-            .add_item(close)
-            .add_native_item(MenuItem::Separator)
-            .add_native_item(MenuItem::Quit),
-    );
-    let menu = Menu::new().add_submenu(submenu);
-
     tauri::Builder::default()
-        .menu(menu)
+        .menu(create_menu())
         .on_menu_event(event_handler)
         .invoke_handler(tauri::generate_handler![show_main_window])
         .run(tauri::generate_context!())
