@@ -10,7 +10,7 @@ fn create_menu() -> Menu {
             .add_item(CustomMenuItem::new("new", "New").accelerator("CmdOrControl+N"))
             .add_item(CustomMenuItem::new("open", "Open").accelerator("CmdOrControl+O"))
             .add_item(CustomMenuItem::new("save", "Save").accelerator("CmdOrControl+S"))
-            .add_item(CustomMenuItem::new("save_as", "Save As").accelerator("CmdOrControl+Shift+S"))
+            .add_item(CustomMenuItem::new("save-as", "Save As").accelerator("CmdOrControl+Shift+S"))
             .add_item(CustomMenuItem::new("close", "Close").accelerator("CmdOrControl+W"))
             .add_native_item(MenuItem::Separator)
             .add_native_item(MenuItem::Quit),
@@ -19,20 +19,11 @@ fn create_menu() -> Menu {
 
 fn event_handler(event: WindowMenuEvent) {
     match event.menu_item_id() {
-        "new" => {
-            event.window().emit("menu-event", "new").unwrap();
-        }
-        "open" => {
-            event.window().emit("menu-event", "open").unwrap();
-        }
-        "save" => {
-            event.window().emit("menu-event", "save").unwrap();
-        }
-        "save_as" => {
-            event.window().emit("menu-event", "save-as").unwrap();
-        }
-        "close" => {
-            event.window().emit("menu-event", "close").unwrap();
+        "new" | "open" | "save" | "save-as" | "close" => {
+            event
+                .window()
+                .emit("menu-event", event.menu_item_id())
+                .unwrap();
         }
         _ => {}
     }
