@@ -6,19 +6,19 @@ use tauri::{CustomMenuItem, Manager, Menu, MenuItem, Submenu, Window, WindowMenu
 fn event_handler(event: WindowMenuEvent) {
     match event.menu_item_id() {
         "new" => {
-            event.window().emit("menu-event", "new-event").unwrap();
+            event.window().emit("menu-event", "new").unwrap();
         }
         "open" => {
-            event.window().emit("menu-event", "open-event").unwrap();
+            event.window().emit("menu-event", "open").unwrap();
         }
         "save" => {
-            event.window().emit("menu-event", "save-event").unwrap();
+            event.window().emit("menu-event", "save").unwrap();
         }
         "save_as" => {
-            event.window().emit("menu-event", "save-as-event").unwrap();
+            event.window().emit("menu-event", "save-as").unwrap();
         }
         "close" => {
-            event.window().emit("menu-event", "close-event").unwrap();
+            event.window().emit("menu-event", "close").unwrap();
         }
         _ => {}
     }

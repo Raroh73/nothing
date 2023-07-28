@@ -155,19 +155,19 @@ async function showMainWindow() {
 window.addEventListener("DOMContentLoaded", () => {
   listen("menu-event", async (event) => {
     switch (event.payload) {
-      case "new-event":
+      case "new":
         newEvent();
         break;
-      case "open-event":
+      case "open":
         openEvent();
         break;
-      case "save-event":
+      case "save":
         saveEvent();
         break;
-      case "save-as-event":
+      case "save-as":
         saveAsEvent();
         break;
-      case "close-event":
+      case "close":
         closeEvent();
         break;
     }
