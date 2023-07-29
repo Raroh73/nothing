@@ -10,7 +10,7 @@ interface File {
   text: string;
 }
 
-const file: File = { path: "", text: "" };
+export const file: File = { path: "", text: "" };
 
 async function newEvent() {
   resetFile();
@@ -143,7 +143,7 @@ export async function removeApp() {
   }
 }
 
-function resetFile() {
+export function resetFile() {
   file.path = "";
   file.text = "";
 }

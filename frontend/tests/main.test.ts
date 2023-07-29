@@ -5,7 +5,9 @@ import {
   createEditorElement,
   createFilenameElement,
   createPreviewElement,
+  file,
   removeApp,
+  resetFile,
 } from "../main";
 
 describe("Main", () => {
@@ -49,5 +51,14 @@ describe("Main", () => {
     removeApp();
     const test = document.getElementById("app");
     expect(test).toBeFalsy();
+  });
+
+  it("should reset the file", () => {
+    file.path = "example/path";
+    file.text = "example text";
+    resetFile();
+    const test = file;
+    expect(test.path).toBe("");
+    expect(test.text).toBe("");
   });
 });
