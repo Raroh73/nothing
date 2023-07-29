@@ -43,6 +43,9 @@ describe("Main", () => {
   });
 
   it("should remove the app", () => {
+    const app = document.createElement("div");
+    app.setAttribute("id", "app");
+    document.body.appendChild(app);
     removeApp();
     const test = document.getElementById("app");
     expect(test).toBeFalsy();
