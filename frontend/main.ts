@@ -117,20 +117,20 @@ export async function createApp() {
   }
 }
 
-function createFilenameElement() {
+export function createFilenameElement() {
   const filename = document.createElement("h1");
   filename.setAttribute("id", "filename");
   return filename;
 }
 
-function createEditorElement() {
+export function createEditorElement() {
   const editor = document.createElement("div");
   editor.setAttribute("id", "editor");
   editor.contentEditable = "true";
   return editor;
 }
 
-function createPreviewElement() {
+export function createPreviewElement() {
   const preview = document.createElement("div");
   preview.setAttribute("id", "preview");
   return preview;
