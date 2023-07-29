@@ -1,5 +1,5 @@
 import { clearMocks } from "@tauri-apps/api/mocks";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
   createApp,
   createEditorElement,
@@ -9,6 +9,10 @@ import {
 } from "../main";
 
 describe("Main", () => {
+  beforeEach(() => {
+    document.body.innerHTML = "";
+  });
+
   afterEach(() => {
     clearMocks();
   });
