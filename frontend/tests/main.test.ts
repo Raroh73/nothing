@@ -19,32 +19,32 @@ describe("Main", () => {
 
   it("should create the app", () => {
     createApp();
-    const app = document.getElementById("app");
-    expect(app).toBeTruthy();
+    const test = document.getElementById("app");
+    expect(test).toBeTruthy();
   });
 
   it("should create an h1 element with id 'filename'", () => {
-    const filenameElement = createFilenameElement();
-    expect(filenameElement.tagName).toBe("H1");
-    expect(filenameElement.getAttribute("id")).toBe("filename");
+    const test = createFilenameElement();
+    expect(test.tagName).toBe("H1");
+    expect(test.getAttribute("id")).toBe("filename");
   });
 
   it("should create a div element with id 'editor' and contentEditable set to true", () => {
-    const editorElement = createEditorElement();
-    expect(editorElement.tagName).toBe("DIV");
-    expect(editorElement.getAttribute("id")).toBe("editor");
-    expect(editorElement.contentEditable).toBe("true");
+    const test = createEditorElement();
+    expect(test.tagName).toBe("DIV");
+    expect(test.getAttribute("id")).toBe("editor");
+    expect(test.contentEditable).toBe("true");
   });
 
   it("should create a div element with id 'preview'", () => {
-    const previewElement = createPreviewElement();
-    expect(previewElement.tagName).toBe("DIV");
-    expect(previewElement.getAttribute("id")).toBe("preview");
+    const test = createPreviewElement();
+    expect(test.tagName).toBe("DIV");
+    expect(test.getAttribute("id")).toBe("preview");
   });
 
   it("should remove the app", () => {
     removeApp();
-    const app = document.getElementById("app");
-    expect(app).toBeFalsy();
+    const test = document.getElementById("app");
+    expect(test).toBeFalsy();
   });
 });
