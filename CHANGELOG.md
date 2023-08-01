@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+- Basic tests.
+- Code refactor.
+- User interface changes.
+
 ## [0.2.2] - 2023-07-14
 
 - User interface improvements.
