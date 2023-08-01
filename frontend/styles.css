@@ -19,21 +19,21 @@
 }
 
 #app > #editor {
-  border-radius: 5px;
+  border-radius: 16px;
   border-style: solid;
-  border-width: 2px;
+  border-width: 4px;
   grid-area: editor;
-  margin: 4px;
-  padding: 4px;
+  margin: 16px;
+  padding: 16px;
 }
 
 #app > #preview {
-  border-radius: 5px;
+  border-radius: 16px;
   border-style: solid;
-  border-width: 2px;
+  border-width: 4px;
   grid-area: preview;
-  margin: 4px;
-  padding: 4px;
+  margin: 16px;
+  padding: 16px;
 }
 
 @media (prefers-color-scheme: dark) {
