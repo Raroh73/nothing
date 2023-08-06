@@ -46,7 +46,7 @@ async function saveEvent() {
 }
 
 async function saveAsEvent() {
-  const markdownConfigWithDefaultPath  = {
+  const markdownConfigWithDefaultPath = {
     ...markDownConfig,
     defaultPath: file.path,
   };
