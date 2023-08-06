@@ -5,6 +5,15 @@ import { readTextFile, writeTextFile } from "@tauri-apps/api/fs";
 import DOMPurify from "dompurify";
 import { marked } from "marked";
 
+const markDownConfig = {
+  filters: [
+    {
+      name: "Markdown",
+      extensions: ["md"],
+    },
+  ],
+};
+
 interface File {
   path: string;
   text: string;
@@ -21,14 +30,7 @@ async function newEvent() {
 }
 
 async function openEvent() {
-  file.path = (await open({
-    filters: [
-      {
-        name: "Markdown",
-        extensions: ["md"],
-      },
-    ],
-  })) as string;
+  file.path = (await open(markDownConfig)) as string;
   file.text = await readTextFile(file.path);
   createApp();
   updateFilenameInnerText();
@@ -38,30 +40,17 @@ async function openEvent() {
 
 async function saveEvent() {
   if (file.path.length === 0) {
-    const saveConfig = {
-      filters: [
-        {
-          name: "Markdown",
-          extensions: ["md"],
-        },
-      ],
-    };
-    file.path = (await save(saveConfig)) as string;
+    file.path = (await save(markDownConfig)) as string;
   }
   await writeTextFile(file.path, file.text);
 }
 
 async function saveAsEvent() {
-  const saveConfig = {
+  const markdownConfigWithDefaultPath  = {
+    ...markDownConfig,
     defaultPath: file.path,
-    filters: [
-      {
-        name: "Markdown",
-        extensions: ["md"],
-      },
-    ],
   };
-  file.path = (await save(saveConfig)) as string;
+  file.path = (await save(markdownConfigWithDefaultPath)) as string;
   await writeTextFile(file.path, file.text);
 }
 
