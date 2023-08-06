@@ -45,7 +45,7 @@ async function saveEvent() {
           extensions: ["md"],
         },
       ],
-    }
+    };
     file.path = (await save(saveConfig)) as string;
   }
   await writeTextFile(file.path, file.text);
@@ -60,7 +60,7 @@ async function saveAsEvent() {
         extensions: ["md"],
       },
     ],
-  }
+  };
   file.path = (await save(saveConfig)) as string;
   await writeTextFile(file.path, file.text);
 }
@@ -168,8 +168,7 @@ function updateFilenameInnerText() {
   }
 }
 
-
-function updateEditor () {
+function updateEditor() {
   const editor = document.getElementById("editor");
   if (editor) {
     editor.innerText = file.text;
