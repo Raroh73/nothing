@@ -15,16 +15,8 @@ export const file: File = { path: "", text: "" };
 async function newEvent() {
   resetFile();
   createApp();
-  const filename = document.getElementById("filename");
-  if (filename) {
-    filename.innerText = file.path;
-  }
-  const editor = document.getElementById("editor");
-  if (editor) {
-    editor.innerText = file.text;
-    editor.addEventListener("input", updateText);
-    editor.addEventListener("input", renderHtml);
-  }
+  updateFilenameInnerText();
+  updateEditor();
   renderHtml();
 }
 
@@ -39,35 +31,28 @@ async function openEvent() {
   })) as string;
   file.text = await readTextFile(file.path);
   createApp();
-  const filename = document.getElementById("filename");
-  if (filename) {
-    filename.innerText = file.path;
-  }
-  const editor = document.getElementById("editor");
-  if (editor) {
-    editor.innerText = file.text;
-    editor.addEventListener("input", updateText);
-    editor.addEventListener("input", renderHtml);
-  }
+  updateFilenameInnerText();
+  updateEditor();
   renderHtml();
 }
 
 async function saveEvent() {
   if (file.path.length === 0) {
-    file.path = (await save({
+    const saveConfig = {
       filters: [
         {
           name: "Markdown",
           extensions: ["md"],
         },
       ],
-    })) as string;
+    }
+    file.path = (await save(saveConfig)) as string;
   }
   await writeTextFile(file.path, file.text);
 }
 
 async function saveAsEvent() {
-  file.path = (await save({
+  const saveConfig = {
     defaultPath: file.path,
     filters: [
       {
@@ -75,7 +60,8 @@ async function saveAsEvent() {
         extensions: ["md"],
       },
     ],
-  })) as string;
+  }
+  file.path = (await save(saveConfig)) as string;
   await writeTextFile(file.path, file.text);
 }
 
@@ -174,3 +160,20 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   showMainWindow();
 });
+
+function updateFilenameInnerText() {
+  const filename = document.getElementById("filename");
+  if (filename) {
+    filename.innerText = file.path;
+  }
+}
+
+
+function updateEditor () {
+  const editor = document.getElementById("editor");
+  if (editor) {
+    editor.innerText = file.text;
+    editor.addEventListener("input", updateText);
+    editor.addEventListener("input", renderHtml);
+  }
+}
