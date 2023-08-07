@@ -18,6 +18,9 @@
       "fs": {
         "readFile": true,
         "writeFile": true
+      },
+      "path": {
+        "all": true
       }
     },
     "bundle": {

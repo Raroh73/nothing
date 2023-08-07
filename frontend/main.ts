@@ -2,17 +2,9 @@ import { invoke } from "@tauri-apps/api";
 import { open, save } from "@tauri-apps/api/dialog";
 import { listen } from "@tauri-apps/api/event";
 import { readTextFile, writeTextFile } from "@tauri-apps/api/fs";
+import { homeDir } from "@tauri-apps/api/path";
 import DOMPurify from "dompurify";
 import { marked } from "marked";
-
-const markDownConfig = {
-  filters: [
-    {
-      name: "Markdown",
-      extensions: ["md"],
-    },
-  ],
-};
 
 interface File {
   path: string;
@@ -30,7 +22,8 @@ async function newEvent() {
 }
 
 async function openEvent() {
-  file.path = (await open(markDownConfig)) as string;
+  const dialogOptions = await createDialogOptions();
+  file.path = (await open(dialogOptions)) as string;
   file.text = await readTextFile(file.path);
   createApp();
   updateFilenameInnerText();
@@ -39,18 +32,17 @@ async function openEvent() {
 }
 
 async function saveEvent() {
+  const dialogOptions = await createDialogOptions();
   if (file.path.length === 0) {
-    file.path = (await save(markDownConfig)) as string;
+    file.path = (await save(dialogOptions)) as string;
   }
   await writeTextFile(file.path, file.text);
 }
 
 async function saveAsEvent() {
-  const markdownConfigWithDefaultPath = {
-    ...markDownConfig,
-    defaultPath: file.path,
-  };
-  file.path = (await save(markdownConfigWithDefaultPath)) as string;
+  const dialogOptions = await createDialogOptions();
+  dialogOptions.defaultPath = file.path;
+  file.path = (await save(dialogOptions)) as string;
   await writeTextFile(file.path, file.text);
 }
 
@@ -121,6 +113,20 @@ export async function removeApp() {
 export function resetFile() {
   file.path = "";
   file.text = "";
+}
+
+async function createDialogOptions() {
+  const defaultPath = await homeDir();
+  const dialogOptions = {
+    defaultPath,
+    filters: [
+      {
+        name: "Markdown",
+        extensions: ["md"],
+      },
+    ],
+  };
+  return dialogOptions;
 }
 
 async function showMainWindow() {
