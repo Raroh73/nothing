@@ -10,7 +10,7 @@ import {
   File,
   resetFile,
   updateFile,
-} from "./File"
+} from "./file"
 
 export const file: File = { path: "", text: "" };
 

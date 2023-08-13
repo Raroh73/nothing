@@ -5,7 +5,7 @@ import {
   File,
   resetFile,
   updateFile,
-} from "../File"
+} from "../file"
 
 describe("Main", () => {
 
