@@ -1,14 +1,13 @@
 import { clearMocks } from "@tauri-apps/api/mocks";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
+
 import {
   createApp,
   createEditorElement,
   createFilenameElement,
   createPreviewElement,
-  File,
   removeApp,
-  resetFile,
-  updateFile,
+  
 } from "../main";
 
 describe("Main", () => {
@@ -54,19 +53,4 @@ describe("Main", () => {
     expect(test).toBeFalsy();
   });
 
-  it("should reset the file", () => {
-    const file: File = { path: "", text: "" };
-
-    resetFile(file);
-    expect(file.path).toBe("");
-    expect(file.text).toBe("");
-  });
-
-  it("should update the file", () => {
-    const file: File = { path: "oldPath", text: "oldText" };
-
-    updateFile(file, "newPath", "newText");
-    expect(file.path).toBe("newPath");
-    expect(file.text).toBe("newText");
-  })
 });

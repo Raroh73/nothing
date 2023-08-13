@@ -6,10 +6,11 @@ import { homeDir } from "@tauri-apps/api/path";
 import DOMPurify from "dompurify";
 import { marked } from "marked";
 
-export interface File {
-  path: string;
-  text: string;
-}
+import {
+  File,
+  resetFile,
+  updateFile,
+} from "./File"
 
 export const file: File = { path: "", text: "" };
 
@@ -111,10 +112,6 @@ export async function removeApp() {
   }
 }
 
-export function resetFile(resetFile: File) {
-  resetFile.path = "";
-  resetFile.text = "";
-}
 
 async function createDialogOptions() {
   const defaultPath = await homeDir();
@@ -173,7 +170,3 @@ function updateEditor() {
   }
 }
 
-export function updateFile(file: File, path: string, text: string) {
-  file.path = path;
-  file.text = text;
-}
