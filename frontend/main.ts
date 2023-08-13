@@ -6,7 +6,7 @@ import { homeDir } from "@tauri-apps/api/path";
 import DOMPurify from "dompurify";
 import { marked } from "marked";
 
-interface File {
+export interface File {
   path: string;
   text: string;
 }
@@ -14,7 +14,7 @@ interface File {
 export const file: File = { path: "", text: "" };
 
 async function newEvent() {
-  resetFile();
+  resetFile(file);
   createApp();
   updateFilenameInnerText();
   updateEditor();
@@ -23,8 +23,9 @@ async function newEvent() {
 
 async function openEvent() {
   const dialogOptions = await createDialogOptions();
-  file.path = (await open(dialogOptions)) as string;
-  file.text = await readTextFile(file.path);
+  const path = (await open(dialogOptions)) as string;
+  const text = await readTextFile(file.path);
+  updateFile(file, path, text);
   createApp();
   updateFilenameInnerText();
   updateEditor();
@@ -47,7 +48,7 @@ async function saveAsEvent() {
 }
 
 async function closeEvent() {
-  resetFile();
+  resetFile(file);
   removeApp();
 }
 
@@ -110,9 +111,9 @@ export async function removeApp() {
   }
 }
 
-export function resetFile() {
-  file.path = "";
-  file.text = "";
+export function resetFile(resetFile: File) {
+  resetFile.path = "";
+  resetFile.text = "";
 }
 
 async function createDialogOptions() {
@@ -170,4 +171,9 @@ function updateEditor() {
     editor.addEventListener("input", updateText);
     editor.addEventListener("input", renderHtml);
   }
+}
+
+export function updateFile(file: File, path: string, text: string) {
+  file.path = path;
+  file.text = text;
 }

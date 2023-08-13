@@ -5,9 +5,10 @@ import {
   createEditorElement,
   createFilenameElement,
   createPreviewElement,
-  file,
+  File,
   removeApp,
   resetFile,
+  updateFile,
 } from "../main";
 
 describe("Main", () => {
@@ -54,11 +55,18 @@ describe("Main", () => {
   });
 
   it("should reset the file", () => {
-    file.path = "example/path";
-    file.text = "example text";
-    resetFile();
-    const test = file;
-    expect(test.path).toBe("");
-    expect(test.text).toBe("");
+    const file: File = { path: "", text: "" };
+
+    resetFile(file);
+    expect(file.path).toBe("");
+    expect(file.text).toBe("");
   });
+
+  it("should update the file", () => {
+    const file: File = { path: "oldPath", text: "oldText" };
+
+    updateFile(file, "newPath", "newText");
+    expect(file.path).toBe("newPath");
+    expect(file.text).toBe("newText");
+  })
 });
