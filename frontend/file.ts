@@ -9,7 +9,6 @@ export function updateFile(file: File, path: string, text: string) {
     file.text = text;
 }
 
-export function resetFile(resetFile: File) {
-    resetFile.path = "";
-    resetFile.text = "";
+export function resetFile(file: File) {
+    updateFile(file, "", "")
 }
