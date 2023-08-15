@@ -28,9 +28,9 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "1.4.0",
-    "@types/node": "20.4.10",
-    "@typescript-eslint/eslint-plugin": "6.3.0",
-    "@typescript-eslint/parser": "6.3.0",
+    "@types/node": "20.5.0",
+    "@typescript-eslint/eslint-plugin": "6.4.0",
+    "@typescript-eslint/parser": "6.4.0",
     "@vitest/coverage-v8": "0.34.1",
     "eslint": "8.47.0",
     "eslint-config-prettier": "9.0.0",
