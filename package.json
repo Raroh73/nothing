@@ -24,7 +24,7 @@
     "@tauri-apps/api": "1.4.0",
     "@types/dompurify": "3.0.2",
     "dompurify": "3.0.5",
-    "marked": "7.0.2"
+    "marked": "7.0.3"
   },
   "devDependencies": {
     "@tauri-apps/cli": "1.4.0",
