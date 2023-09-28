@@ -8,7 +8,7 @@ repository = "https://github.com/Raroh73/nothing"
 edition = "2021"
 
 [build-dependencies]
-tauri-build = { version = "1.4.0", features = [] }
+tauri-build = { version = "1.4.1", features = [] }
 
 [dependencies]
 anyhow = "1.0.75"
