@@ -12,7 +12,7 @@ tauri-build = { version = "1.5.0", features = [] }
 
 [dependencies]
 anyhow = "1.0.75"
-tauri = { version = "1.5.1", features = ["dialog-open", "dialog-save", "fs-read-file", "fs-write-file", "path-all", "shell-open", "updater"] }
+tauri = { version = "1.5.2", features = ["dialog-open", "dialog-save", "fs-read-file", "fs-write-file", "path-all", "shell-open", "updater"] }
 
 [features]
 custom-protocol = ["tauri/custom-protocol"]
