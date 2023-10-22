@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@tauri-apps/api": "1.5.1",
-    "@types/dompurify": "3.0.3",
+    "@types/dompurify": "3.0.4",
     "dompurify": "3.0.6",
     "marked": "9.1.2"
   },
